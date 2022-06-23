@@ -1,5 +1,6 @@
 from abc import ABCMeta, abstractmethod
 from datetime import datetime, timedelta, timezone
+from models.banco_dados import BancoDados
 
 class Pessoa(metaclass = ABCMeta):
     def __init__(self, nome, cpf, data_nascimento, email, numero_celular, numero_telefone = None):
@@ -10,6 +11,12 @@ class Pessoa(metaclass = ABCMeta):
         self.__email = email
         self.__numero_celular = numero_celular
         self.__numero_telefone = numero_telefone
+        self.cnx = BancoDados(
+            "root",
+            "552210",
+            "localhost",
+            "haloc"
+        )
 
         if Pessoa.valida_nascimento(datetime(year = self.__ano_nascimento, month = self.__mes_nascimento, day = self.__dia_nascimento)):
             self.__data_nascimento = datetime(year = self.__ano_nascimento, month = self.__mes_nascimento, day = self.__dia_nascimento)
@@ -27,6 +34,9 @@ class Pessoa(metaclass = ABCMeta):
             self.nome,
             self.idade
         )
+
+    def data_nascimento_formatada_internacional(self):
+        return self.__data_nascimento.strftime("%Y/%m/%d")
 
     # 5 dígitos | único para qualquer nível
     def implementa_id(self):
@@ -58,7 +68,7 @@ class Pessoa(metaclass = ABCMeta):
     
     @property
     def numero_telefone(self):
-        return self.__numero_telefone if self.__numero_telefone else "s/ número telefone"
+        return self.__numero_telefone
 
     @staticmethod
     def __calcula_idade(data_nascimento):

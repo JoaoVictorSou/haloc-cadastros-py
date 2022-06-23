@@ -39,15 +39,16 @@ class BancoDados:
     
     def query_post(self, query_base):
         try:
-            cursor = self.__cnx
-
+            cursor = self.__cnx.cursor()
+            print(cursor)
             cursor.execute(query_base)
-            cursor.commit()
+            self.__cnx.commit()
 
-            linhas_afetadas = cursor.rowcount()
+            id_ultima_linha = cursor.lastrowid
+            linhas_afetadas = cursor.rowcount
         except:
             linhas_afetadas = None
         finally:
             cursor.close()
         
-        return linhas_afetadas
+        return True if linhas_afetadas or linhas_afetadas else False
