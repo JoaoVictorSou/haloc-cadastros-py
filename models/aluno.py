@@ -54,7 +54,7 @@ class Aluno(Pessoa):
         
             return sucesso
 
-    def atualiza_aluno(self, nome, data_nascimento, email, senha, tipo_plano, numero_celular, numero_telefone):
+    def atualiza_aluno(self, nome, data_nascimento, email, senha, tipo_plano, numero_celular, numero_telefone = "s/n"):
         try:
             self.cnx.iniciar_conexao()
             

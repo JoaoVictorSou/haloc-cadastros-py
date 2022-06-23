@@ -51,7 +51,7 @@ class Administrador(Pessoa):
         
             return sucesso
 
-    def atualiza_administrador(self, nome, data_nascimento, email, senha, salario, numero_celular, numero_telefone):
+    def atualiza_administrador(self, nome, data_nascimento, email, senha, salario, numero_celular, numero_telefone = "s/n"):
         try:
             self.cnx.iniciar_conexao()
             
