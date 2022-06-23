@@ -1,5 +1,6 @@
 from abc import ABCMeta, abstractmethod
 from datetime import datetime, timedelta, timezone
+from random import randint
 from models.banco_dados import BancoDados
 
 class Pessoa(metaclass = ABCMeta):
@@ -34,9 +35,21 @@ class Pessoa(metaclass = ABCMeta):
         return self.__data_nascimento.strftime("%Y/%m/%d")
 
     # 5 dígitos | único para qualquer nível
-    def implementa_id(self):
-        pass
+    @staticmethod
+    def gera_id():
+        ids_sistema = Pessoa.pega_todos_id()
 
+        while True:
+            id_possivel = randint(11111, 99999)
+            id_valido = True # ID começa válido, pois caso esteja repetido irá interrumper o laço for
+            for id_sistema in ids_sistema:
+                if id_possivel == id_sistema[0]:
+                    id_valido = False
+            
+            if id_valido:
+                break
+        return id_possivel
+            
     @property
     def idade(self):
         return Pessoa.__calcula_idade(self.__data_nascimento)
