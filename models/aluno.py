@@ -214,16 +214,16 @@ class Aluno(Pessoa):
 
             for resposta in resposta_lista:  
                 # Atributos do aluno
-                email = resposta[5]
-                nome = resposta[9]
+                email = resposta[8]
+                nome = resposta[5]
                 data_nascimento = str(resposta[2]).replace("-", "/")
-                numero_telefone = resposta[0]
-                cpf_bd = resposta[7]
-                status_aluno = resposta[3]
-                tipo_plano = resposta[4]
-                senha = resposta[8]
-                id_db = resposta[6]
-                numero_celular = resposta[1]
+                numero_telefone = resposta[8]
+                cpf_bd = resposta[1]
+                status_aluno = resposta[6]
+                tipo_plano = resposta[12]
+                senha = resposta[4]
+                id_db = resposta[0]
+                numero_celular = resposta[9]
                 
                 aluno = Aluno(
                     nome, 
