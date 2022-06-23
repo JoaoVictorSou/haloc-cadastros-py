@@ -165,19 +165,19 @@ class Aluno(Pessoa):
 
                 cnx.iniciar_conexao()
 
-                resposta = cnx.query_get(query_base)
+                resposta = cnx.query_get(query_base)[0]
                 
                 # Atributos do aluno
-                email = resposta[0][8]
-                nome = resposta[0][5]
-                data_nascimento = str(resposta[0][2]).replace("-", "/")
-                numero_telefone = resposta[0][8]
-                cpf_bd = resposta[0][1]
-                status_aluno = resposta[0][6]
-                tipo_plano = resposta[0][12]
-                senha = resposta[0][4]
-                id_db = resposta[0][0]
-                numero_celular = resposta[0][9]
+                email = resposta[8]
+                nome = resposta[5]
+                data_nascimento = str(resposta[2]).replace("-", "/")
+                numero_telefone = resposta[8]
+                cpf_bd = resposta[1]
+                status_aluno = resposta[6]
+                tipo_plano = resposta[12]
+                senha = resposta[4]
+                id_db = resposta[0]
+                numero_celular = resposta[9]
                 
                 aluno = Aluno(
                     nome, 

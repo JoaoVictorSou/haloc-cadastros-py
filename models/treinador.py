@@ -133,19 +133,19 @@ class Treinador(Pessoa):
 
                 cnx.iniciar_conexao()
 
-                resposta = cnx.query_get(query_base)
+                resposta = cnx.query_get(query_base)[0]
                 
                 # Atributos do treinador
-                email = resposta[0][5]
-                nome = resposta[0][9]
-                data_nascimento = str(resposta[0][2]).replace("-", "/")
-                numero_telefone = resposta[0][0]
-                cpf_bd = resposta[0][7]
-                status_treinador = resposta[0][3]
-                salario = resposta[0][4]
-                senha = resposta[0][8]
-                id_db = resposta[0][6]
-                numero_celular = resposta[0][1]
+                email = resposta[5]
+                nome = resposta[9]
+                data_nascimento = str(resposta[2]).replace("-", "/")
+                numero_telefone = resposta[0]
+                cpf_bd = resposta[7]
+                status_treinador = resposta[3]
+                salario = resposta[4]
+                senha = resposta[8]
+                id_db = resposta[6]
+                numero_celular = resposta[1]
                 
                 treinador = Treinador(
                     nome, 

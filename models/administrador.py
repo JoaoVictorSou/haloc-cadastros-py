@@ -135,19 +135,19 @@ class Administrador(Pessoa):
 
                 cnx.iniciar_conexao()
 
-                resposta = cnx.query_get(query_base)
+                resposta = cnx.query_get(query_base)[0]
                 
                 # Atributos do administrador
-                email = resposta[0][0]
-                nome = resposta[0][1]
-                data_nascimento = str(resposta[0][2]).replace("-", "/")
-                numero_telefone = resposta[0][3]
-                cpf_bd = resposta[0][4]
-                nivel = resposta[0][5]
-                salario = resposta[0][6]
-                senha = resposta[0][7]
-                id_db = resposta[0][8]
-                numero_celular = resposta[0][9]
+                email = resposta[0]
+                nome = resposta[1]
+                data_nascimento = str(resposta[2]).replace("-", "/")
+                numero_telefone = resposta[3]
+                cpf_bd = resposta[4]
+                nivel = resposta[5]
+                salario = resposta[6]
+                senha = resposta[7]
+                id_db = resposta[8]
+                numero_celular = resposta[9]
 
                 administrador = Administrador(
                     nome, 
