@@ -11,12 +11,7 @@ class Pessoa(metaclass = ABCMeta):
         self.__email = email
         self.__numero_celular = numero_celular
         self.__numero_telefone = numero_telefone
-        self.cnx = BancoDados(
-            "root",
-            "552210",
-            "localhost",
-            "haloc"
-        )
+        self.cnx = BancoDados.informa_caminho_haloc()
 
         if Pessoa.valida_nascimento(datetime(year = self.__ano_nascimento, month = self.__mes_nascimento, day = self.__dia_nascimento)):
             self.__data_nascimento = datetime(year = self.__ano_nascimento, month = self.__mes_nascimento, day = self.__dia_nascimento)

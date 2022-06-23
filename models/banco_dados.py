@@ -52,3 +52,12 @@ class BancoDados:
             cursor.close()
         
         return True if linhas_afetadas or linhas_afetadas else False
+    
+    @staticmethod
+    def informa_caminho_haloc():
+        return BancoDados(
+            "root",
+            "552210",
+            "localhost",
+            "haloc"
+        )
