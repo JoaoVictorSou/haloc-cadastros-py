@@ -140,6 +140,39 @@ class Pessoa(metaclass = ABCMeta):
         return False
     
     @staticmethod
+    def pega_todos_id():
+        id_haloc = []
+        try:
+            cnx = BancoDados.informa_caminho_haloc()
+
+            cnx.iniciar_conexao()
+
+            query_administrador = f"""
+            SELECT id
+            FROM Administrador
+            """
+            id_administradores = cnx.query_get(query_administrador)
+            id_haloc.extend(id_administradores)
+
+            query_treinador = f"""
+            SELECT id
+            FROM Treinador
+            """
+            id_treinadores = cnx.query_get(query_treinador)
+            id_haloc.extend(id_treinadores)
+
+            query_aluno = f"""
+            SELECT id
+            FROM Aluno
+            """
+            id_alunos = cnx.query_get(query_aluno)
+            id_haloc.extend(id_alunos)
+        finally:
+            cnx.encerrar_conexao()
+
+            return id_haloc
+
+    @staticmethod
     def monta_mascara(cpf: str):
         if Pessoa.valida_cpf(cpf):
             str_cpf = Pessoa.retira_mascara(cpf)
