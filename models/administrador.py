@@ -4,9 +4,9 @@ from models.banco_dados import BancoDados
 import datetime
 
 class Administrador(Pessoa):
-    def __init__(self, nome, cpf, data_nascimento, email, id, nivel, salario, senha, numero_celular, numero_telefone = "s/n"):
+    def __init__(self, nome, cpf, data_nascimento, email, nivel, salario, senha, numero_celular, numero_telefone = "s/n"):
         super().__init__(nome, cpf, data_nascimento, email, numero_celular, numero_telefone)
-        self.__id = id
+        self.__id = Pessoa.gera_id()
         self.__senha = senha
         self.__nivel = nivel
         if Administrador.valida_salario(salario):
