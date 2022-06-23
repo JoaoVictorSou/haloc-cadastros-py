@@ -54,7 +54,7 @@ class Convidado(Pessoa):
         
             return sucesso
 
-    def atualiza_convidado(self, nome, data_nascimento, email, senha, numero_celular, numero_telefone = "s/n"):
+    def atualiza_convidado(self, nome, data_nascimento, email, numero_celular, numero_telefone = "s/n"):
         try:
             self.cnx.iniciar_conexao()
             
@@ -64,7 +64,6 @@ class Convidado(Pessoa):
 	            SET nome = '{nome}',
                 dataNascimento = '{data_nascimento}',
 	            email = '{email}',
-	            senha = '{senha}',
 	            numeroCelular = '{numero_celular}',
                 numeroTelefone = '{numero_telefone}'
             WHERE cpf = '{self.cpf}'
