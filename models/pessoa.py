@@ -74,9 +74,14 @@ class Pessoa(metaclass = ABCMeta):
         data_atual.astimezone(utc_brasil)
 
         diferenca_anos = data_atual.year - data_nascimento.year
-        relacao_mes_dia = (data_atual.month >= data_nascimento.month) and (data_atual.day >= data_nascimento.day)
 
-        return diferenca_anos if relacao_mes_dia else (diferenca_anos - 1)
+        # Relação das datas para a idade
+        if data_atual.month > data_nascimento.month:
+            return diferenca_anos
+        elif data_atual.month == data_nascimento.month and data_atual.day >= data_nascimento.day:
+            return diferenca_anos
+        else:
+            return diferenca_anos-1
 
     @staticmethod
     def valida_nascimento(data_nascimento):
