@@ -4,7 +4,7 @@ from models.banco_dados import BancoDados
 import datetime
 
 class Administrador(Pessoa):
-    def __init__(self, nome, cpf, data_nascimento, email, id, nivel, salario, senha, numero_celular, numero_telefone = None):
+    def __init__(self, nome, cpf, data_nascimento, email, id, nivel, salario, senha, numero_celular, numero_telefone = "s/n"):
         super().__init__(nome, cpf, data_nascimento, email, numero_celular, numero_telefone)
         self.__id = id
         self.__senha = senha
@@ -30,7 +30,7 @@ class Administrador(Pessoa):
 	            senha,
 	            salario,
 	            numeroCelular,
-                {"numeroTelefone" if self.numero_telefone else ""}
+                numeroTelefone
             ) VALUES (
 	            {self.id},
                 "{self.cpf}",
@@ -41,7 +41,7 @@ class Administrador(Pessoa):
                 "{self.senha}",
                 {self.salario},
                 "{self.numero_celular}",
-                {self.numero_telefone if self.numero_telefone else ""}
+                "{self.numero_telefone}"
             )
             """
             
@@ -88,7 +88,7 @@ class Administrador(Pessoa):
                     query_base = f"""
                     SELECT * 
                     FROM Administrador
-                    WHERE id = '{id}'
+                    WHERE id = {id}
                     """
                 
                 cnx = BancoDados.informa_caminho_haloc()
