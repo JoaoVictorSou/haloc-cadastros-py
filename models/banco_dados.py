@@ -40,7 +40,7 @@ class BancoDados:
     def query_post(self, query_base):
         try:
             cursor = self.__cnx.cursor()
-            print(cursor)
+            
             cursor.execute(query_base)
             self.__cnx.commit()
 
