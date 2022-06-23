@@ -42,7 +42,7 @@ class Aluno(Pessoa):
                 {self.__status_aluno},
                 "{self.senha}",
                 {self.__tipo_plano},
-                {self.__mensalidade},
+                {self.mensalidade},
                 "{self.numero_celular}",
                 "{self.numero_telefone}"
             )
@@ -66,6 +66,7 @@ class Aluno(Pessoa):
 	            email = '{email}',
 	            senha = '{senha}',
 	            tipoPlano = {tipo_plano},
+                valorMensalidade = {self.mensalidade},
 	            numeroCelular = '{numero_celular}',
                 numeroTelefone = '{numero_telefone}'
             WHERE cpf = '{self.cpf}' AND id = {self.id}
@@ -104,7 +105,7 @@ class Aluno(Pessoa):
             self.__mensalidade = 120
         else:
             raise ValueError("Mensalidade não pode ser calculada com o plano existente!")
-    
+
     @property
     def id(self):
             return self.__id
@@ -130,6 +131,11 @@ class Aluno(Pessoa):
 
         return plano
     
+    @property
+    def mensalidade(self):
+        self.calcula_mensalidade()
+        return self.__mensalidade
+
     @staticmethod
     def valida_tipo_plano(tipo_plano):
         if tipo_plano >= 0 and tipo_plano <= 2:
@@ -162,16 +168,16 @@ class Aluno(Pessoa):
                 resposta = cnx.query_get(query_base)
                 
                 # Atributos do aluno
-                email = resposta[0][5]
-                nome = resposta[0][9]
+                email = resposta[0][8]
+                nome = resposta[0][5]
                 data_nascimento = str(resposta[0][2]).replace("-", "/")
-                numero_telefone = resposta[0][0]
-                cpf_bd = resposta[0][7]
-                status_aluno = resposta[0][3]
-                tipo_plano = resposta[0][4]
-                senha = resposta[0][8]
-                id_db = resposta[0][6]
-                numero_celular = resposta[0][1]
+                numero_telefone = resposta[0][8]
+                cpf_bd = resposta[0][1]
+                status_aluno = resposta[0][6]
+                tipo_plano = resposta[0][12]
+                senha = resposta[0][4]
+                id_db = resposta[0][0]
+                numero_celular = resposta[0][9]
                 
                 aluno = Aluno(
                     nome, 
