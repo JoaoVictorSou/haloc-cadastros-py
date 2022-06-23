@@ -3,7 +3,7 @@ from datetime import datetime, timedelta, timezone
 from models.banco_dados import BancoDados
 
 class Pessoa(metaclass = ABCMeta):
-    def __init__(self, nome, cpf, data_nascimento, email, numero_celular, numero_telefone = None):
+    def __init__(self, nome, cpf, data_nascimento, email, numero_celular, numero_telefone = "s/n"):
         self.__nome = nome
         self.__dia_nascimento = int(data_nascimento[8:])
         self.__mes_nascimento = int(data_nascimento[5:7])
