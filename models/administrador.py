@@ -74,6 +74,23 @@ class Administrador(Pessoa):
         
             return sucesso
 
+    def deleta_administrador(self, id, cpf):
+        sucesso = False
+        try:
+            if id == self.id and cpf == self.cpf:
+                self.cnx.iniciar_conexao()
+
+                query_base = f"""
+                DELETE FROM Administrador
+                WHERE id = {self.id} and cpf = '{self.cpf}' 
+                """
+
+                sucesso = self.cnx.query_post(query_base)
+        finally:
+            self.cnx.encerrar_conexao()
+            return sucesso
+
+
     @property
     def id(self):
             return self.__id
