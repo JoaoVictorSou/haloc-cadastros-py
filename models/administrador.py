@@ -67,7 +67,7 @@ class Administrador(Pessoa):
                 numeroTelefone = '{numero_telefone}'
             WHERE cpf = '{self.cpf}' AND id = {self.id}
             """
-            print(query_base)
+            
             sucesso = self.cnx.query_post(query_base)
         finally:
             self.cnx.encerrar_conexao()

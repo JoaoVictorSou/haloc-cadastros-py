@@ -50,6 +50,30 @@ class Treinador(Pessoa):
         
             return sucesso
 
+    def atualiza_treinador(self, nome, data_nascimento, email, senha, salario, numero_celular, numero_telefone):
+        try:
+            self.cnx.iniciar_conexao()
+            
+            sucesso = False
+            query_base = f"""
+            UPDATE Treinador
+	            SET nome = '{nome}',
+                dataNascimento = '{data_nascimento}',
+	            email = '{email}',
+	            senha = '{senha}',
+	            salario = {salario},
+	            numeroCelular = '{numero_celular}',
+                numeroTelefone = '{numero_telefone}'
+            WHERE cpf = '{self.cpf}' AND id = {self.id}
+            """
+            
+            sucesso = self.cnx.query_post(query_base)
+        finally:
+            self.cnx.encerrar_conexao()
+        
+            return sucesso
+
+
     @property
     def id(self):
             return self.__id
