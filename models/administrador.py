@@ -1,4 +1,3 @@
-from cmath import e
 from models.pessoa import Pessoa
 from models.banco_dados import BancoDados
 import datetime
