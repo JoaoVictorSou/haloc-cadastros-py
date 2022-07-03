@@ -1,4 +1,5 @@
 import mysql.connector as connector
+from util.auth import MY_SQL
 
 class BancoDados:
     def __init__(self, usuario, senha, host, banco_dados):
@@ -59,7 +60,7 @@ class BancoDados:
     def informa_caminho_haloc():
         return BancoDados(
             "root",
-            "55221005",
+            MY_SQL,
             "localhost",
             "haloc"
         )

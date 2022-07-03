@@ -1,3 +1,6 @@
+#ARQUIVOS
+/util/*
+
 # Diretórios
 /main.py
 __pycache__/
