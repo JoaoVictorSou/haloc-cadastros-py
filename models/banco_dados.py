@@ -14,7 +14,9 @@ class BancoDados:
                 user = self.__usuario,
                 password = self.__senha,
                 host = self.__host,
-                database = self.__banco_dados
+                database = self.__banco_dados,
+                auth_plugin = "mysql_native_password"
+
             )
         except:
             self.__cnx.close()
@@ -57,7 +59,7 @@ class BancoDados:
     def informa_caminho_haloc():
         return BancoDados(
             "root",
-            "552210",
+            "55221005",
             "localhost",
             "haloc"
         )
